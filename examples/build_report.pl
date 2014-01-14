@@ -1,5 +1,7 @@
 #!/usr/bin/env perl
 
+#Added stations option, off by default, to allow you to check stations' upgrades if desired
+
 use strict;
 use warnings;
 use FindBin;
@@ -11,10 +13,12 @@ use Games::Lacuna::Client ();
 
 my $planet_name;
 my $use_seconds_left = 0;
+my $check_stations = 0;
 
 GetOptions(
     'planet=s' => \$planet_name,
     'seconds!' => \$use_seconds_left,
+    'stations' => \$check_stations,
 );
 require Time::Duration if $use_seconds_left;
 
@@ -39,6 +43,8 @@ foreach my $name ( sort keys %$planets ) {
     my $planet    = $client->body( id => $planet_id );
     my $result    = $planet->get_buildings;
     my $buildings = $result->{buildings};
+    
+    next if $check_stations && $planet->{status}{body}{type} ne "space station";
 
     my @build;
 
