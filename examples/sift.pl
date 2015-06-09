@@ -774,7 +774,7 @@ Pushes plans and glyphs between your own planets.
 
 Examples:
   Send all 1+4 glyph plans     : $0 --to Planet --from Planet --p_glyph --max_base 1 --min_plus 4
-  Send 10 gold & bauxite glyphs: $0 --to Planet --from Planet --glyph_match gold --glyph bauxite --g_num 10
+  Send 10 gold & bauxite glyphs: $0 --to Planet --from Planet --glyph_match gold --glyph_match bauxite --g_num 10
   Send all plans & glyphs      : $0 --to Planet --from Planet --p_all --g_all
   Send all plans, but Beaches  : $0 --to Planet --from Planet --p_all --plan_exclude Beach
 END_USAGE
